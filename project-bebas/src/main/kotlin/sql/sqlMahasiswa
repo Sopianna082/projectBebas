@@ -1,0 +1,18 @@
+create table master_mahasiswa (
+    id int8 not null,
+    mahasiswa_nim varchar(15),
+    mahasiswa_nama varchar(25),
+    mahasiswa_alamat varchar(25),
+    mahasiswa_jurusan varchar(25),
+    created_at timestamp,
+    created_by int8,
+    status boolean not null,
+    update int8,
+    updated_at timestamp,
+    updated_by int8,
+    primary key (id)
+);
+
+alter table if exists master_mahasiswa drop constraint if exists uq_mahasiswa_nim;
+alter table if exists master_mahasiswa add constraint uq_mahasiswa_nim unique (mahasiswa_nim, status, update);
+create sequence mahasiswa_id_seq start 1 increment 1;
